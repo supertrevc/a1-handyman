@@ -4,7 +4,11 @@ export const SITE = {
   owner: "Justin",
   shortDescription:
     "Locally owned, fully insured handyman serving Sapulpa, Tulsa, and Green Country.",
-  url: "https://a1handymanok.com",
+  // Prospect demo: the Vercel concept URL, NOT a1handymanok.com. A demo must not
+  // advertise the client's own domain as canonical/sitemap host — that is a
+  // production signal the concept has not earned. Point it at the real domain
+  // at launch, alongside SITE_SEARCH_VISIBILITY=public.
+  url: "https://a1-handyman.vercel.app",
   phone: "(918) 949-8890",
   phoneHref: "tel:+19189498890",
   phoneRaw: "+19189498890",

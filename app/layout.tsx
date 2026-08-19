@@ -7,6 +7,7 @@ import { MobilePhoneBar } from "@/components/MobilePhoneBar";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema } from "@/lib/schema";
 import { SITE } from "@/lib/site";
+import { IS_INDEXABLE } from "@/lib/search-visibility.mjs";
 
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -65,7 +66,37 @@ export const metadata: Metadata = {
     description: SITE.shortDescription,
     images: ["/og-image.jpg"],
   },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  /**
+   * Inherited by every route that does not set its own `robots`.
+   *
+   * Driven by SITE_SEARCH_VISIBILITY (src/lib/search-visibility.mjs) and
+   * noindex by default: this is a prospect concept, and it must not turn up in
+   * Google until the client buys the site and we launch it deliberately. The
+   * matching X-Robots-Tag header is set in the Next config.
+   */
+  robots: IS_INDEXABLE
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      }
+    : {
+        index: false,
+        follow: false,
+        noarchive: true,
+        noimageindex: true,
+        googleBot: {
+          index: false,
+          follow: false,
+          noarchive: true,
+          noimageindex: true,
+        },
+      },
   category: "home services",
 };
 

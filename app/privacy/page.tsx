@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   description:
     "How A-1 Handyman Services LLC collects, uses, and protects your personal information when you contact us or browse our website.",
   alternates: { canonical: "/privacy" },
-  robots: { index: true, follow: true },
+  // Inherits the root layout's robots, which is driven by SITE_SEARCH_VISIBILITY.
+  // Hardcoding index here overrode it and made this page claim to be indexable
+  // while the rest of the prospect demo was noindex.
 };
 
 export default function PrivacyPage() {

@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   description:
     "How A-1 Handyman Services LLC uses cookies and similar technologies on this website, and how you can control them.",
   alternates: { canonical: "/cookies" },
-  robots: { index: true, follow: true },
+  // Inherits the root layout's robots, which is driven by SITE_SEARCH_VISIBILITY.
+  // Hardcoding index here overrode it and made this page claim to be indexable
+  // while the rest of the prospect demo was noindex.
 };
 
 export default function CookiesPage() {
