@@ -50,7 +50,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/(.*)",
-        headers: securityHeaders,
+        headers: [...securityHeaders, ...robotsHeaders],
       },
     ];
   },
